@@ -18,27 +18,27 @@ export default function Login({}) {
   const router = useRouter();
 
   let loginImg = [login1, login2, login3, login4];
-  let [loginImage, setLoginImage] = useState(login1);
+  let [loginImage, setLoginImage] = useState(0);
 
-  let i = 0;
+  let i = 1;
   function switchImage(){
-     setLoginImage(loginImg[i]);
+     setLoginImage(i);
      i = (i+1)%4;
   }
 
   useEffect(() => {
     setInterval(switchImage, 3000);
-  }, [switchImage]);
+  }, []);
 
 
   return (
-    <div className="w-full dark:bg-[#000000] dark:text-white relative">
-        <div className="w-1/2">
+    <div className="w-full h-full flex dark:bg-[#000000] dark:text-white relative">
+        <div className="w-1/2 my-auto h-full pl-[3.125rem]">
             <div className="logo">
 
             </div>
             <div className="relative w-full">
-                <Image src={loginImages} alt="login ;(" />
+                <Image src={loginImg[loginImage]} alt="login ;(" />
             </div>
             <p className="text-24px text-[#5F6FEE]">
                 <span className="text-[#F6BF23]">Level-up</span> your career from anywhere
@@ -52,7 +52,7 @@ export default function Login({}) {
                     <p className="text-24px">Login to Your Account</p>
                     <div className="">
                         <p className="text-24px mb-[1.875rem]">Continue with</p>
-                        <div className="grid gap-x-[1.5625rem]">
+                        <div className="flex space-x-[1.5625rem]">
                             <div className="border border-[#5F6FEE] py-[1.875rem] px-[0.75rem]"> <GoogleLogo /> </div>
                             <div className="border border-[#5F6FEE] py-[1.875rem] px-[0.75rem]"> <LinkedinLogo /> </div>
                             <div className="border border-[#5F6FEE] py-[1.875rem] px-[0.75rem]"> <GithubLogo /> </div>
@@ -61,19 +61,21 @@ export default function Login({}) {
                     </div>
 
                     <div className="">
-                        <p className="text-24px"></p>
-                        <input className="px-5 py-3"></input>
+                        <p className="text-24px">Email Address</p>
+                        <input className="outline-none	px-5 py-3 border bg-[rgba(95,111,238,0.08)] border-[rgba(95,111,238,0.6)] rounded-[8px]"  placeholder="Enter email" required></input>
                     </div>
                     <div className="">
-                        <p className="text-24px"></p>
-                        <div className="">
-                        <input className="px-5 py-3"></input>
-                        <Link href="#">
-                        <button className="">
-                        Forgot Password?
-                        </button>
-                        </Link>
+                        
+                        <div className="flex justify-between">
+                            <p className="text-24px">Password</p>
+                            <Link href="#">
+                                <button className="text-12px">
+                                Forgot Password?
+                                </button>
+                            </Link>
                         </div>
+                        <input className="px-5 py-3" placeholder="Enter password" required></input>
+                        
                     </div>
 
                     <input className="px-5 py-3"></input>
